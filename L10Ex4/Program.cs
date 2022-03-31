@@ -4,7 +4,6 @@
 
     static void Main()
     {
-        var time = new System.Diagnostics.Stopwatch();
         bool errorCatch = false;
 
         Console.Write("Please enter the starting point of this experiment: ");
@@ -18,11 +17,12 @@
         Console.Write("\nPlease enter the value you want to use to end the sequence: ");
         while (errorCatch == false) { errorCatch = int.TryParse(Console.ReadLine(), out endVal); }
 
+        decimal starttime = Environment.TickCount;
 
-        time.Start();
         numGen(0);
-        time.Stop();
-        Console.WriteLine("\n It took exactly {0} milliseconds to find {1} in the range {2}-{3}", time.ElapsedMilliseconds, endVal, start, end);
+
+        decimal endtime = Environment.TickCount;
+        Console.WriteLine("\n It took exactly {0} seconds to find {1} in the range {2}-{3}", (endtime-starttime)/1000, endVal, start, end);
 
     }
 
